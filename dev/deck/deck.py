@@ -38,3 +38,10 @@ class Deck:
         """
         card = self.cards.pop()
         return card
+
+    def peek_card(self) -> Card:
+        """
+        Shows the card at the top of the deck without drawing it
+        :return: Card - the card at the top of the deck
+        """
+        return self.cards[len(self.cards)-1]
