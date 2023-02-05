@@ -12,7 +12,7 @@ class Deck:
     """
 
     def __init__(self):
-        self.__cards: list(Card) = []
+        self.__cards: list[Card] = []
         self.__initialize_new_deck()
 
     def __initialize_new_deck(self):

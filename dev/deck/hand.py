@@ -1,6 +1,7 @@
 """
 hand.py
 """
+from typing import Optional
 from dev.deck.card import Card
 from dev.deck.exception.card_not_found_error import CardNotFoundError
 
@@ -11,7 +12,7 @@ class Hand:
     """
 
     def __init__(self):
-        self.__cards: list(Card) = []
+        self.__cards: list[Card] = []
 
     def add_card(self, card: Card):
         """
@@ -32,7 +33,7 @@ class Hand:
         :raises: CardNotFoundError
         :return: The card if it's in the hand
         """
-        result: Card = None
+        result: Optional[Card] = None
         for card in self.__cards:
             if card.get_number() == number:
                 result = card
