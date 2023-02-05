@@ -1,9 +1,9 @@
 """
 deck.py
 """
-
 import random
 from dev.deck.card import Card
+from dev.deck.exception.card_not_found_error import CardNotFoundError
 
 
 class Deck:
@@ -30,9 +30,13 @@ class Deck:
     def draw_card(self) -> Card:
         """
         Removes a card from the beginning of the list and returns it
+        :raises: CardNotFoundError if no cards to draw
         :return: The card drawn
         """
-        card = self.__cards.pop()
+        try:
+            card = self.__cards.pop()
+        except IndexError as exc:
+            raise CardNotFoundError() from exc
         return card
 
     def peek_card(self) -> Card:

@@ -19,7 +19,7 @@ class Card:
     def set_number(self, number: int):
         """
         :param number: Number to set between 1 and 104
-        :raise ValueError: Number is not between 1 and 104
+        :raises ValueError: Number is not between 1 and 104
         :return: void
         """
         if number < 1 or number > 104:
