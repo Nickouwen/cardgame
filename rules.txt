@@ -1,1 +1,11 @@
-I will outline the rules in this txt doc, as well as google docs.
+There are 104 suitless cards.
+Each card has a points value, ranging from 1-7. We will have to look up the points values of each card in the actual game, but I'm not sure it matters too much.
+Each player is dealt 10 cards in their hand.
+The dealer lays 4 cards face up on the table.
+Players lay one card from their hand face down on the table.
+Once all players have laid their cards, they flip them over at the same time.
+The player with the lowest card # goes first. They place their card in a row next to the card with a lower number that is already on the table.
+(The card is placed next to the closest number. So if the player plays a 32, and there is a 22 and a 31 on the table, you must play it on the 31 card.)
+Once the sixth card in a row is played, the player picks up the entire row, leaving behind only the card they just played.
+Once all ten cards are played, the points are totalled from the cards that have been picked up by each player. They are then added to the total score.
+The game is played to 100 points.
