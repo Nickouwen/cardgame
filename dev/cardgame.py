@@ -10,7 +10,6 @@ user_action: str = ""
 
 def game_over() -> bool:
     """
-    Determines if the game is over
     :return: True if game over; else false
     """
     return user_action == "exit"

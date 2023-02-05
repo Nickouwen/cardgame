@@ -12,36 +12,32 @@ class Deck:
     """
 
     def __init__(self):
-        self.cards: list(Card) = []
-        self.initialize_new_deck()
+        self.__cards: list(Card) = []
+        self.__initialize_new_deck()
 
-    def initialize_new_deck(self):
-        """
-        Creates a new ordered deck
-        :return:
-        """
-        self.cards.clear()
+    def __initialize_new_deck(self):
+        self.__cards.clear()
         for i in range(104):
-            self.cards.append(Card(i + 1))
+            self.__cards.append(Card(i + 1))
 
     def shuffle(self):
         """
         Randomizes the order of the cards in this deck
-        :return:
+        :return: void
         """
-        random.shuffle(self.cards)
+        random.shuffle(self.__cards)
 
     def draw_card(self) -> Card:
         """
         Removes a card from the beginning of the list and returns it
-        :return: Card - the card drawn
+        :return: The card drawn
         """
-        card = self.cards.pop()
+        card = self.__cards.pop()
         return card
 
     def peek_card(self) -> Card:
         """
         Shows the card at the top of the deck without drawing it
-        :return: Card - the card at the top of the deck
+        :return: The card at the top of the deck
         """
-        return self.cards[len(self.cards)-1]
+        return self.__cards[len(self.__cards) - 1]

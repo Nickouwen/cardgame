@@ -7,23 +7,27 @@ class Card:
     """
     Class Card
     """
-    def __init__(self, card_number: int):
-        self.card_number = card_number
+
+    def __init__(self, number: int = 1):
+        if number < 1 or number > 104:
+            raise ValueError("Number must be between 1 and 104")
+        self.__number = number
 
     def __str__(self) -> str:
-        return f"Card number: {self.card_number}"
+        return f"Card number: {self.__number}"
 
-    def set_card_number(self, card_number: int):
+    def set_number(self, number: int):
         """
-        Sets the card number to the given number
-        :param card_number: the number to set
-        :return:
+        :param number: Number to set between 1 and 104
+        :raise ValueError: Number is not between 1 and 104
+        :return: void
         """
-        self.card_number = card_number
+        if number < 1 or number > 104:
+            raise ValueError("Number must be between 1 and 104")
+        self.__number = number
 
-    def get_card_number(self) -> int:
+    def get_number(self) -> int:
         """
-        Gets the current card number
-        :return: int - card number
+        :return: Card number
         """
-        return self.card_number
+        return self.__number
