@@ -1,9 +1,7 @@
 """
 player.py
 """
-
-
-from dev.deck.hand import Hand
+from deck.hand import Hand
 
 
 class Player:

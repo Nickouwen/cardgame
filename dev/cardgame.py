@@ -1,9 +1,9 @@
 """
 cardgame.py
 """
-from dev.deck.deck import Deck
-from dev.deck.exception.card_not_found_error import CardNotFoundError
-from dev.deck.hand import Hand
+from deck.deck import Deck
+from deck.exception.card_not_found_error import CardNotFoundError
+from deck.hand import Hand
 
 
 user_action: str = ""
@@ -29,8 +29,8 @@ while not game_over():
         print("Deck shuffled")
         print(f"Top card: {deck.peek_card()}")
     elif user_action == "draw":
-        card = deck.draw_card()
-        print(card)
+        hand.add_card(deck.draw_card())
+        print("Drew a card")
     elif user_action == "deal":
         hand.add_card(deck.draw_card())
         hand.add_card(deck.draw_card())
