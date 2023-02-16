@@ -11,7 +11,7 @@ class Game(models.Model):
         (STATUS_OVER, 'Game Over'),
     ]
     name = models.CharField(max_length=255)
-    round_number = models.PositiveSmallIntegerField()
+    round_number = models.PositiveSmallIntegerField(default=0)
     started_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(
         max_length=1, choices=STATUS_CHOICES, default=STATUS_NEW)
