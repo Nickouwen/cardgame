@@ -2,8 +2,9 @@
 hand.py
 """
 from typing import Optional
-from deck.card import Card
-from deck.exception.card_not_found_error import CardNotFoundError
+
+from .card import Card
+from .exception.card_not_found_error import CardNotFoundError
 
 
 class Hand:

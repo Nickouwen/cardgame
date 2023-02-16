@@ -1,16 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpRequest
-from rest_framework import viewsets
-
-from .models import CardModel
-from .serializers import CardSerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
-# Create your views here.
-def say_hello(request: HttpRequest):
-    return render(request, 'hello.html', {'name': 'Frans'})
+@api_view()
+def card_list(request):
+    return Response('ok')
 
 
-class CardViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = CardModel.objects.all()
-    serializer_class = CardSerializer
+@api_view()
+def card_detail(request, id):
+    return Response(id)
