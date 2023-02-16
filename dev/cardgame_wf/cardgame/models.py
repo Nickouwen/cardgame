@@ -16,9 +16,12 @@ class Game(models.Model):
     status = models.CharField(
         max_length=1, choices=STATUS_CHOICES, default=STATUS_NEW)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class CardCollection(models.Model):
-    pass
+    name = models.CharField(max_length=255, default="New Collection")
 
 
 class Card(models.Model):
@@ -35,10 +38,17 @@ class Card(models.Model):
         (NONE, ""),
     ]
     number = models.PositiveSmallIntegerField()
-    suit = models.CharField(max_length=1, choices=SUIT_CHOICES, default=NONE)
+    suit = models.CharField(
+        max_length=1, choices=SUIT_CHOICES, blank=True, default=NONE)
     point_value = models.PositiveSmallIntegerField()
-    collection = models.ForeignKey(
-        CardCollection, on_delete=models.PROTECT, null=True, default=None)
+    collections = models.ManyToManyField(
+        CardCollection, blank=True, default=None)
+
+    def __str__(self) -> str:
+        return f"Number: {self.number}, Suit: {self.suit}"
+
+    class Meta:
+        ordering = ['number', 'suit']
 
 
 class Table(models.Model):
@@ -51,6 +61,9 @@ class Player(models.Model):
     points = models.PositiveSmallIntegerField()
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class TableCardCollection(models.Model):
     collection = models.OneToOneField(
@@ -59,7 +72,6 @@ class TableCardCollection(models.Model):
 
 
 class PlayerCardCollection(models.Model):
-    name = models.CharField(max_length=255)
     collection = models.OneToOneField(
         CardCollection, on_delete=models.CASCADE, primary_key=True)
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
