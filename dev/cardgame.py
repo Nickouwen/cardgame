@@ -1,10 +1,10 @@
 """
 cardgame.py
 """
-from cardgame_bl.deck.deck import Deck
-from cardgame_bl.deck.exception.card_not_found_error import CardNotFoundError
-from cardgame_bl.deck.hand import Hand
-
+from cardgame_service.deck.deck import Deck
+from cardgame_service.deck.exception.card_not_found_error import \
+    CardNotFoundError
+from cardgame_service.deck.hand import Hand
 
 user_action: str = ""
 
