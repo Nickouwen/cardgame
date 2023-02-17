@@ -6,6 +6,7 @@ from . import models
 @admin.register(models.Card)
 class CardAdmin(admin.ModelAdmin):
     list_display = ['number', 'point_value']
+    order_by = ['number']
 
 
 @admin.register(models.Game)
@@ -16,7 +17,7 @@ class GameAdmin(admin.ModelAdmin):
 
 @admin.register(models.Player)
 class PlayerAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'game', 'points']
 
 
 @admin.register(models.Table)

@@ -20,10 +20,6 @@ class Game(models.Model):
         return self.name
 
 
-class CardCollection(models.Model):
-    name = models.CharField(max_length=255, default="New Collection")
-
-
 class Card(models.Model):
     CLUBS = 'C'
     DIAMONDS = 'D'
@@ -40,25 +36,32 @@ class Card(models.Model):
     number = models.PositiveSmallIntegerField()
     suit = models.CharField(
         max_length=1, choices=SUIT_CHOICES, blank=True, default=NONE)
-    point_value = models.PositiveSmallIntegerField()
-    collections = models.ManyToManyField(
-        CardCollection, blank=True, default=None)
+    point_value = models.PositiveSmallIntegerField(default=1)
 
     def __str__(self) -> str:
-        return f"Number: {self.number}, Suit: {self.suit}"
+        return f"({self.number}): {self.point_value} heads"
 
-    class Meta:
-        ordering = ['number', 'suit']
+
+class CardCollection(models.Model):
+    name = models.CharField(max_length=255, default="New Collection")
+    cards = models.ManyToManyField(
+        Card, blank=True, default=None)
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class Table(models.Model):
     game = models.OneToOneField(
         Game, on_delete=models.CASCADE, primary_key=True)
 
+    def __str__(self) -> str:
+        return f"{self.game}"
+
 
 class Player(models.Model):
     name = models.CharField(max_length=255)
-    points = models.PositiveSmallIntegerField()
+    points = models.PositiveSmallIntegerField(default=0)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
@@ -70,8 +73,14 @@ class TableCardCollection(models.Model):
         CardCollection, on_delete=models.CASCADE, primary_key=True)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return f"{self.collection} at table {self.table}"
+
 
 class PlayerCardCollection(models.Model):
     collection = models.OneToOneField(
         CardCollection, on_delete=models.CASCADE, primary_key=True)
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"{self.collection} of player {self.player}"
