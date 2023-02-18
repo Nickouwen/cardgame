@@ -2,7 +2,7 @@ import logging
 
 from .services import GameService
 
-logger = logging.getLogger('__name__')
+logger = logging.getLogger(__name__)
 
 
 class CardgameAPI:

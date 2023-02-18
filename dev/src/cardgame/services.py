@@ -4,7 +4,7 @@ from django.db import transaction
 
 from .models import Game, Table
 
-logger = logging.getLogger('__name__')
+logger = logging.getLogger(__name__)
 
 
 class GameService:

@@ -4,7 +4,7 @@ from django.db import transaction
 
 from .interfaces import CardgameInterface
 
-logger = logging.getLogger('__name__')
+logger = logging.getLogger(__name__)
 
 
 class PlaygroundService:
