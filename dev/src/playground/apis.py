@@ -4,10 +4,11 @@ from rest_framework.response import Response
 
 from cardgame.apis import CardgameAPI
 
-from .services import NicsGameService
+from .services.nics_game_service import NicsGameService
+from .services.services import PlaygroundService
 
 
-def say_hello(request):
+def create_game(request):
     api = CardgameAPI(NicsGameService())
     game = api.create(game_name="My New Game")
 
