@@ -3,7 +3,7 @@ import logging
 from cardgame.interfaces import IGameService
 
 from .interfaces import CardgameInterface
-from .models import Game
+from .models import *
 
 logger = logging.getLogger(__name__)
 
@@ -16,8 +16,7 @@ class NicsGameService(IGameService):
     @staticmethod
     def create_game(*, name: str) -> dict:
         logger.info('Creating new game')
-        game = Game()
-        game.name = name
+        game = Game(name=name)
         return {
             'id': game.id,
             'name': game.name,
@@ -37,8 +36,13 @@ class NicsGameService(IGameService):
         return {}
 
     @staticmethod
-    def delete_game(*, id: int) -> dict:
+    def delete_game(*, id: int) -> bool:
         logger.info('Deleting game')
+        return False
+
+    @staticmethod
+    def create_table(*, game_id: int, table_name: str) -> dict:
+        logger.info('Creating table')
         return {}
 
 

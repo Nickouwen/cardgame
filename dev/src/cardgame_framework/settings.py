@@ -86,13 +86,18 @@ WSGI_APPLICATION = "cardgame_framework.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "cardgame",
-        "HOST": "localhost",
-        "USER": "admin",
-        "PASSWORD": "Password"
-    }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'testdatabase',
+    },
+
+    # "mysql": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "cardgame",
+    #     "HOST": "localhost",
+    #     "USER": "admin",
+    #     "PASSWORD": "Password"
+    # },
 }
 
 
