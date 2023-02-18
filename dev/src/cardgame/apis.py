@@ -20,7 +20,7 @@ class CardgameAPI:
     @staticmethod
     def update(*, game_id: int, game_name: str) -> dict:
         logger.info('method "update" called')
-        return GameService.update_game(new_name=game_name)
+        return GameService.update_game(id=game_id, new_name=game_name)
 
     @staticmethod
     def delete(*, game_id: int) -> dict:
