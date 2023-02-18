@@ -2,12 +2,13 @@ import logging
 
 from django.db import transaction
 
+from .interfaces import IGameService
 from .models import Game, Table
 
 logger = logging.getLogger(__name__)
 
 
-class GameService:
+class GameService(IGameService):
     @staticmethod
     def create_game(*, name: str) -> dict:
         logger.info('Creating new game')
@@ -21,7 +22,11 @@ class GameService:
             table.save()
 
         return {
-            'name': name,
+            'id': game.pk,
+            'name': game.name,
+            'round_number': game.round_number,
+            'started_at': game.started_at,
+            'status': game.status,
         }
 
     @staticmethod

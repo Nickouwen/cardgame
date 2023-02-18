@@ -1,28 +1,27 @@
 import logging
 
+from .interfaces import IGameService
 from .services import GameService
 
 logger = logging.getLogger(__name__)
 
 
 class CardgameAPI:
+    def __init__(self, igame_service: IGameService = GameService()) -> None:
+        self.__game_service = igame_service
 
-    @staticmethod
-    def create(*, game_name: str) -> dict:
+    def create(self, *, game_name: str) -> dict:
         logger.info('method "create" called')
-        return GameService.create_game(name=game_name)
+        return self.__game_service.create_game(name=game_name)
 
-    @staticmethod
-    def get(*, game_id: int) -> dict:
+    def get(self, *, game_id: int) -> dict:
         logger.info('method "get" called')
-        return GameService.get_game(id=game_id)
+        return self.__game_service.get_game(id=game_id)
 
-    @staticmethod
-    def update(*, game_id: int, game_name: str) -> dict:
+    def update(self, *, game_id: int, game_name: str) -> dict:
         logger.info('method "update" called')
-        return GameService.update_game(id=game_id, new_name=game_name)
+        return self.__game_service.update_game(id=game_id, new_name=game_name)
 
-    @staticmethod
-    def delete(*, game_id: int) -> dict:
+    def delete(self, *, game_id: int) -> dict:
         logger.info('method "id" called')
-        return GameService.delete_game(id=game_id)
+        return self.__game_service.delete_game(id=game_id)
