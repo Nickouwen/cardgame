@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from dev.deck.card import Card
+from src.cardgame_service.deck.card import Card
 
 
 class TestCard(TestCase):
@@ -32,4 +32,3 @@ class TestSetNumber(TestCard):
 
         with self.assertRaises(ValueError):
             self.card.set_number(0)
-
