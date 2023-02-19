@@ -46,3 +46,6 @@ A simple card game based off a French card game
         }
     ]
 ```
+
+# Style Guide
+https://phalt.github.io/django-api-domains/
