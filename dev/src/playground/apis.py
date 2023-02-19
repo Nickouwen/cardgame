@@ -12,7 +12,7 @@ def create_game(request):
     api = CardgameAPI(NicsGameService())
     game = api.create(game_name="My New Game")
 
-    return render(request, 'hello.html', {
+    return render(request, 'game.html', {
         'id': game['id'],
         'name': game['name'],
         'round_number': game['round_number'],
@@ -23,9 +23,24 @@ def create_game(request):
 
 def game_detail(request, id):
     api = CardgameAPI(NicsGameService())
-    game = api.get(game_id=int(id))
+    game = api.get(game_id=id)
 
-    return render(request, 'hello.html', {
+    if not game:
+        return render(request, 'game.html')
+    return render(request, 'game.html', {
+        'id': game['id'],
+        'name': game['name'],
+        'round_number': game['round_number'],
+        'started_at': game['started_at'],
+        'status': game['status'],
+    })
+
+
+def update_game(request, id, name):
+    api = CardgameAPI(NicsGameService())
+    game = api.update(game_id=id, game_name=name)
+
+    return render(request, 'game.html', {
         'id': game['id'],
         'name': game['name'],
         'round_number': game['round_number'],
@@ -35,10 +50,8 @@ def game_detail(request, id):
 
 
 @api_view()
-def card_list(request):
-    return Response('ok')
+def delete_game(request, id):
+    api = CardgameAPI(NicsGameService())
+    success = api.delete(game_id=id)
 
-
-@api_view()
-def card_detail(request, id):
-    return Response(id)
+    return Response(success)

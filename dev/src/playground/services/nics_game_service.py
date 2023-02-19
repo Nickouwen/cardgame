@@ -65,11 +65,27 @@ class NicsGameService(IGameService):
 
     @staticmethod
     def get_game(*, id: int) -> dict:
+        logger.info('Getting game')
+
+        game = Game.games.get(id)
+        if game:
+            return {
+                'id': game.id,
+                'name': game.name,
+                'round_number': game.round_number,
+                'started_at': game.started_at,
+                'status': game.status
+            }
+
+        return {}
+
+    @staticmethod
+    def update_game(*, id: int, new_name: str) -> dict:
+        logger.info('Updating game')
         if not isinstance(id, int):
             return {}
 
-        logger.info('Getting game')
-
+        Game.games[id].name = new_name
         game = Game.games[id]
         return {
             'id': game.id,
@@ -80,13 +96,13 @@ class NicsGameService(IGameService):
         }
 
     @staticmethod
-    def update_game(*, id: int, new_name: str) -> dict:
-        logger.info('Updating game')
-        return {}
-
-    @staticmethod
     def delete_game(*, id: int) -> bool:
         logger.info('Deleting game')
+
+        if id in Game.games:
+            del Game.games[id]
+            return True
+
         return False
 
     @staticmethod
