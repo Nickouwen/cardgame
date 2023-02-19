@@ -1,6 +1,6 @@
 import logging
 
-from src.cardgame.interfaces import IGameService
+from cardgame.interfaces import IGameService
 
 from ..models import *
 
