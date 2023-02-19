@@ -21,6 +21,19 @@ def create_game(request):
     })
 
 
+def game_detail(request, id):
+    api = CardgameAPI(NicsGameService())
+    game = api.get(game_id=int(id))
+
+    return render(request, 'hello.html', {
+        'id': game['id'],
+        'name': game['name'],
+        'round_number': game['round_number'],
+        'started_at': game['started_at'],
+        'status': game['status'],
+    })
+
+
 @api_view()
 def card_list(request):
     return Response('ok')

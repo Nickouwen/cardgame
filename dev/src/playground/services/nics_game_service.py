@@ -65,8 +65,19 @@ class NicsGameService(IGameService):
 
     @staticmethod
     def get_game(*, id: int) -> dict:
+        if not isinstance(id, int):
+            return {}
+
         logger.info('Getting game')
-        return {}
+
+        game = Game.games[id]
+        return {
+            'id': game.id,
+            'name': game.name,
+            'round_number': game.round_number,
+            'started_at': game.started_at,
+            'status': game.status
+        }
 
     @staticmethod
     def update_game(*, id: int, new_name: str) -> dict:

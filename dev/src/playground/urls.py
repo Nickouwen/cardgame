@@ -6,4 +6,5 @@ urlpatterns = [
     path('cards/', apis.card_list),
     path('cards/<int:id>/', apis.card_detail),
     path('game/create/', apis.create_game),
+    path('game/<id>/', apis.game_detail)
 ]
