@@ -33,7 +33,7 @@ if __name__ == '__main__':
         user_action = input("Enter an action: ")
         if user_action == "shuffle":
             logger.info('Shuffling')
-            deck = game_service.shuffle_deck(game.table.deck)
+            game.table.deck = game_service.shuffle_deck(game.table.deck)
         elif user_action == "draw":
             logger.info('Drawing 1')
             card = game_service.draw_card(game.table.deck, current_player)
@@ -53,7 +53,7 @@ if __name__ == '__main__':
                 game_service.draw_card(game.table.deck, current_player.hand)
         elif user_action == "show":
             logger.info('Showing hand')
-            game_service.get_hand(current_player)
+            print(current_player.hand)
         elif user_action.startswith("play"):
             logger.info('Playing card')
             action = user_action.split()
