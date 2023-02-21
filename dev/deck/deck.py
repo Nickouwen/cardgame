@@ -2,8 +2,8 @@
 deck.py
 """
 import random
-from dev.deck.card import Card
-from dev.deck.exception.card_not_found_error import CardNotFoundError
+from deck.card import Card
+from deck.exception.card_not_found_error import CardNotFoundError
 
 
 class Deck:

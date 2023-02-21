@@ -1,9 +1,9 @@
 """
 cardgame.py
 """
-from dev.deck.deck import Deck
-from dev.deck.exception.card_not_found_error import CardNotFoundError
-from dev.deck.hand import Hand
+from deck.deck import Deck
+from deck.exception.card_not_found_error import CardNotFoundError
+from deck.hand import Hand
 
 
 user_action: str = ""
