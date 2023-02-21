@@ -1,0 +1,18 @@
+<html>
+    <body>
+        {% if name %}
+        <h1>Game Name: {{ name }}!</h1>
+        <div>ID: {{ id }}</div>
+        <div>round_number: {{ round_number }}</div>
+        <div>started_at: {{ started_at }}</div>
+        <div>status: {{ status }}</div>
+        {% else %}
+        <h1>No game found!</h1>
+        {% endif %}
+        <ul>
+            {% for card in cards %}
+            <li>{{ card.number }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
