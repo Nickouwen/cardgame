@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-from ..models.game_model import Game
 from ..services.nics_game_service import NicsGameService
 
 
