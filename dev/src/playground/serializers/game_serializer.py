@@ -4,10 +4,10 @@ from ..services.nics_game_service import NicsGameService
 
 
 class GameSerializer(serializers.Serializer):
-    id = serializers.IntegerField(required=False)
+    id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(max_length=255)
     round_number = serializers.IntegerField(required=False)
-    started_at = serializers.DateTimeField(required=False)
+    started_at = serializers.DateTimeField(read_only=True)
     status = serializers.CharField(max_length=1, required=False)
 
     def create(self, validated_data):

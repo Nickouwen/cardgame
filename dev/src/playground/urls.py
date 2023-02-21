@@ -1,7 +1,8 @@
-from django.urls import path
+from rest_framework import routers
 
 from . import apis
 
-urlpatterns = [
-    path('games/', apis.game_list),
-]
+router = routers.DefaultRouter()
+router.register('games', apis.GameViewSet, basename='game')
+
+urlpatterns = router.urls
