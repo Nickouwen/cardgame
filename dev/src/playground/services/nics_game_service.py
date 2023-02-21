@@ -15,8 +15,8 @@ class NicsGameService:
     """
     _games = []
 
-    @staticmethod
     def create_game(
+        self,
         name: str,
         player1_name: str = 'Player 1',
         player2_name: str = 'Player 2'
@@ -30,16 +30,11 @@ class NicsGameService:
         game = Game(id=1, name="Test Game")
         game.table.players.append(Player(player1_name))
         game.table.players.append(Player(player2_name))
-        NicsGameService._games.append(game)
+        self._games.append(game)
 
         return game
 
-    @staticmethod
-    def get_all_games() -> list[Game]:
-        return NicsGameService._games
-
-    @staticmethod
-    def draw_card(deck: CardCollection, hand: CardCollection) -> Card:
+    def draw_card(self, deck: CardCollection, hand: CardCollection) -> Card:
         """
         Removes the top card from CardCollection 'deck'
         and adds it to the CardCollection 'hand'
@@ -48,15 +43,13 @@ class NicsGameService:
 
         return Card(number=1, suit=Card.SPADES, point_value=0)
 
-    @staticmethod
-    def get_hand(player: Player) -> CardCollection:
+    def get_hand(self, player: Player) -> CardCollection:
         """
         Gets the player's CardCollection 'hand'
         """
         return CardCollection()
 
-    @staticmethod
-    def play_card(card: Card, pile: CardCollection) -> bool:
+    def play_card(self, card: Card, pile: CardCollection) -> bool:
         """
         Moves card from whichever hand it is in and adds it to
         the card pile on the table
@@ -64,8 +57,7 @@ class NicsGameService:
         logger.info("Playing a card")
         return False
 
-    @staticmethod
-    def shuffle_deck(deck: CardCollection) -> None:
+    def shuffle_deck(self, deck: CardCollection) -> None:
         """
         Shuffles the CardCollection 'deck'
         """
