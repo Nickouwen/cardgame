@@ -25,39 +25,39 @@ if __name__ == '__main__':
 
     # Main game loop
     user_action = ""
+    current_player = game.table.players[0]
 
     while not game_over(user_action):
+        print(f"It is {current_player.name}'s turn.")
         user_action = input("Enter an action: ")
         if user_action == "shuffle":
             logger.info('Shuffling')
-            deck = GameService.shuffle_deck(game_id=game['id'])
+            deck = GameService.shuffle_deck(game.table.deck)
         elif user_action == "draw":
             logger.info('Drawing 1')
-            card = GameService.draw_card(
-                table_id=game['table_id'], player_id=game['player1_id'])
+            card = GameService.draw_card(game.table.deck, current_player)
         elif user_action.startswith("draw"):
             number = user_action.split(maxsplit=1).pop()
             logger.info(f'Drawing {number}')
             try:
                 i = int(number)
                 for _ in range(i):
-                    GameService.draw_card(
-                        table_id=game['table_id'], player_id=game['player1_id'])
+                    GameService.draw_card(game.table.deck, current_player.hand)
             except ValueError:
                 print(f"Error drawing this number of cards: {number}")
         elif user_action == "deal":
             logger.info('Dealing')
             for i in range(1, 11):
-                GameService.draw_card(
-                    table_id=game['table_id'], player_id=game['player1_id'])
+                GameService.draw_card(game.table.deck, current_player.hand)
         elif user_action == "show":
             logger.info('Showing hand')
-            GameService.get_hand(player_id=game['player1_id'])
+            GameService.get_hand(current_player)
         elif user_action.startswith("play"):
             logger.info('Playing card')
             action = user_action.split()
             if len(action) == 3:
                 card_number = int(user_action.split()[1])
                 pile_number = int(user_action.split()[2])
-                GameService.play_card(card_number=card_number,
-                                      pile_number=pile_number)
+                if current_player.hand.cards.get(card_number):
+                    GameService.play_card(current_player.hand[card_number],
+                                          game.table.piles[pile_number])
