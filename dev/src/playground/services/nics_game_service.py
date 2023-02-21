@@ -27,7 +27,7 @@ class NicsGameService:
         """
         logger.info('Creating new game')
 
-        game = Game(id=1, name="Test Game")
+        game = Game(id=1, name=name)
         game.table.players.append(Player(player1_name))
         game.table.players.append(Player(player2_name))
         self._games.append(game)
@@ -43,12 +43,6 @@ class NicsGameService:
 
         return Card(number=1, suit=Card.SPADES, point_value=0)
 
-    def get_hand(self, player: Player) -> CardCollection:
-        """
-        Gets the player's CardCollection 'hand'
-        """
-        return CardCollection()
-
     def play_card(self, card: Card, pile: CardCollection) -> bool:
         """
         Moves card from whichever hand it is in and adds it to
@@ -57,8 +51,9 @@ class NicsGameService:
         logger.info("Playing a card")
         return False
 
-    def shuffle_deck(self, deck: CardCollection) -> None:
+    def shuffle_deck(self, deck: CardCollection) -> CardCollection:
         """
         Shuffles the CardCollection 'deck'
         """
         logger.info('Shuffling card collection')
+        return deck

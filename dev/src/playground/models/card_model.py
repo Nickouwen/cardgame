@@ -12,7 +12,7 @@ class Card:
         (NONE, ""),
     ]
 
-    def __init__(self, *, number: int, suit: str, point_value: int) -> None:
+    def __init__(self, number: int, suit: str, point_value: int) -> None:
         self.number = number
         self.suit = suit
         self.point_value = point_value
