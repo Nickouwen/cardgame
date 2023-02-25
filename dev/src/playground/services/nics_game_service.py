@@ -4,7 +4,6 @@ from ..models.card_model import Card
 from ..models.cardcollection_model import CardCollection
 from ..models.game_model import Game
 from ..models.player_model import Player
-from ..models.table_model import Table
 
 logger = logging.getLogger(__name__)
 
