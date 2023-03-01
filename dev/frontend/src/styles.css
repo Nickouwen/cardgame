@@ -56,13 +56,73 @@ body {
   padding: 0;
 }
 
+.cardgame {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.cardgame>* {
+  text-align: center;
+  align-items: center;
+}
+
+.cardgame-left {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.cardgame-centre {
+  flex: 1;
+}
+
+.cardgame-right {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.instructions>* {
+  display: block;
+}
+
+.score>* {
+  display: block;
+}
+
+.table>* {
+  display: block;
+}
+
+.table-pile>* {
+  display: inline-block;
+  text-align: center;
+}
+
+.player>* {
+  display: inline-block;
+  text-align: center;
+}
+
+.arrange-vertically>* {
+  display: block;
+}
+
 .card {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 50px;
+  font-size: 14px;
   font-weight: bold;
-  line-height: 100px;
+  line-height: 30px;
   height: 100px;
   margin-right: -1px;
   margin-top: -1px;

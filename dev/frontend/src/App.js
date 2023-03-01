@@ -1,7 +1,93 @@
 import { useState } from "react";
 
-function Card({ value }) {
-  return <button className="card">{value}</button>
+const handCards = [
+  { number: 3, point_value: 1 },
+  { number: 11, point_value: 5 },
+  { number: 55, point_value: 7 }
+];
+
+const pileCards = [
+  { number: 8, point_value: 1 },
+  { number: 35, point_value: 2 },
+  { number: 40, point_value: 3 },
+  { number: 77, point_value: 5 },
+  { number: 89, point_value: 1 },
+];
+
+function Instructions() {
+  return (
+    <div className="instructions">
+      <span>Instructions:</span>
+      <text className="instructions-text">
+        This is the instructions text.
+      </text>
+    </div>
+  )
+}
+
+function Score() {
+  return (
+    <div className="score">
+      <span>Score:</span>
+      <text className="score-text">
+        This is the score text.
+      </text>
+    </div>
+  )
+}
+
+function Card({ number, value }) {
+  return <button className="card"><div>{number}</div><div>{value}</div></button>
+}
+
+function BullheadStack() {
+  return <Card number="Bull" value="Head" />;
+}
+
+function Hand() {
+  const handItems = handCards.map(card =>
+    <Card key={card.number} number={card.number} value={card.point_value} />
+  );
+  return (
+    <div className="player-hand">{handItems}</div>
+  );
+}
+
+function Pile() {
+  const pileItems = pileCards.map(card =>
+    <Card key={card.number} number={card.number} value={card.point_value} />
+  );
+  return (
+    <div className="table-pile">
+      <div className="pile-label">Pile 1:</div>
+      <div className="pile-items">{pileItems}</div>
+    </div>
+  );
+}
+
+function Player() {
+  return (
+    <div className="player">
+      <div>
+        <BullheadStack />
+      </div>
+      <div>
+        <Hand />
+        Player 1 Name
+      </div>
+    </div>
+  );
+}
+
+function Table() {
+  return (
+    <div className="table">
+      <Pile />
+      <Pile />
+      <Pile />
+      <Pile />
+    </div>
+  );
 }
 
 function Square({ value, onSquareClick }) {
@@ -48,19 +134,8 @@ function Board({ xIsNext, squares, onPlay }) {
 
   return (
     <>
+      <div className="status">{status}</div>
       {board}
-      <div className="player-hand">
-        <Card value="1" />
-        <Card value="1" />
-        <Card value="1" />
-        <Card value="1" />
-        <Card value="1" />
-        <Card value="1" />
-        <Card value="1" />
-        <Card value="1" />
-        <Card value="1" />
-        <Card value="1" />
-      </div>
     </>
   );
 }
@@ -104,14 +179,29 @@ export default function Game() {
   });
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+    <>
+      <div className="cardgame">
+        <div className="cardgame-left">
+          <Instructions />
+        </div>
+        <div className="cardgame-centre">
+          <Player />
+          <Table />
+          <Player />
+        </div>
+        <div className="cardgame-right">
+          <Score />
+        </div>
       </div>
-      <div className="game-info">
-        <ol>{moves}</ol>
-      </div>
-    </div>
+      {/* <div className="game">
+        <div className="game-board">
+          <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        </div>
+        <div className="game-info">
+          <ol>{moves}</ol>
+        </div>
+      </div> */}
+    </>
   )
 }
 
