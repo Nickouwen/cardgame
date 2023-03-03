@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-size: 2.8vmin;
 }
 
 body {
@@ -46,16 +47,6 @@ ul {
   padding-left: 20px;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
-  margin: 20px;
-  padding: 0;
-}
-
 .cardgame {
   display: -webkit-box;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -75,6 +66,7 @@ body {
 }
 
 .cardgame-left {
+  height: 100vh;
   width: 200px;
   display: flex;
   justify-content: center;
@@ -85,6 +77,7 @@ body {
 }
 
 .cardgame-right {
+  height: 100vh;
   width: 200px;
   display: flex;
   justify-content: center;
@@ -120,15 +113,15 @@ body {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 14px;
+  font-size: 3.2vmin;
   font-weight: bold;
-  line-height: 30px;
-  height: 100px;
+  line-height: 3.2vh;
+  height: 14vh;
+  width: 7vw;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 50px;
 }
 
 .square {
